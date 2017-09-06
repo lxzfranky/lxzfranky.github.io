@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>hexo+github搭建免费个人博客详细教程 | Franky's Diary</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">hexo+github搭建免费个人博客详细教程</h1><a id="logo" href="/.">Franky's Diary</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">hexo+github搭建免费个人博客详细教程</h1><div class="post-meta"><a href="/2017/09/06/env-gitblog/#comments" class="comment-count"></a><p><span class="date">Sep 06, 2017</span><span><a href="/categories/环境配置/" class="category">环境配置</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>Schlägt</i></i></span></p></div><div class="post-content"><p><strong><em>准备工作</em></strong></p>
+<ol>
+<li>一个github账号</li>
+<li>安装node.js(node官网下载)、npm(推荐brew安装)</li>
+<li>安装git</li>
+</ol>
+<p><strong><strong>一 在GitHub创建仓库</strong></strong></p>
+<p>新建一个名为你的用户名.github.io的仓库</p>
+<blockquote>
+<p>仓库名字必须是：lxzfranky.github.io，其中lxzfranky是我的用户名</p>
+</blockquote>
+<p><strong><strong>二 绑定域名（此步骤可以省略）</strong></strong></p>
+<p>如果不绑定域名肯定也是可以的，就用默认的 xxx.github.io 来访问</p>
+<ul>
+<li><p>阿里云购买域名后 执行</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping xxx.github.com</div></pre></td></tr></table></figure>
+</li>
+<li><p>得到对应的IP地址，去万网的控制台中解析购买的域名</p>
+</li>
+<li>在GitHub中该仓库-&gt;Settings-&gt;GitHub Pages-&gt;Custom domain 填入购买的域名</li>
+</ul>
+<p>至此自己的博客基本已经完成</p>
+<p><strong><strong>三 安装hexo</strong></strong></p>
+<p>目前有很多工具我这里主要用的hexo</p>
+<p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。</p>
+<p>官网：<a href="http://hexo.io" target="_blank" rel="external">http://hexo.io</a></p>
+<p>github: <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">https://github.com/hexojs/hexo</a></p>
+<ul>
+<li><p>安装</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化<br>在电脑的某个地方新建一个名为blog的文件夹（名字可以随便取），我的是~/WorkSpace/blog</p>
+</li>
+<li><p>在blog目录下执行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>至此hexo安装完毕</p>
+<p><strong><strong>四 本地运行</strong></strong></p>
+<ul>
+<li><p>在项目根目录下执行 </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s <span class="comment"># 启动服务</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>hexo s是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 即可看到内容</p>
+</li>
+</ul>
+<blockquote>
+<p>hexo一些常用的命令</p>
+</blockquote>
+<ul>
+<li><p>基本命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></div><div class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></div><div class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></div><div class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">hexo deploy <span class="comment">#部署到GitHub</span></div><div class="line">hexo <span class="built_in">help</span>  <span class="comment"># 查看帮助</span></div><div class="line">hexo version  <span class="comment">#查看Hexo的版本</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>缩写</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo n == hexo new</div><div class="line">hexo g == hexo generate</div><div class="line">hexo s == hexo server</div><div class="line">hexo d == hexo deploy</div></pre></td></tr></table></figure>
+</li>
+<li><p>命令组合</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo s -g <span class="comment">#生成并本地预览</span></div><div class="line">hexo d -g <span class="comment">#生成并上传</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><strong>五 配置git</strong></strong></p>
+<ul>
+<li><p>编辑 根目录下的 _config.yml 文件</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https:<span class="comment">//github.com/lxzfranky/lxzfranky.github.io</span></div><div class="line">  branch: master</div><div class="line">  message: 提交博客内容</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行下面命令发布代码到博客</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><strong>六 下载好看的主体和有用的插件</strong></strong></p>
+<ul>
+<li><p>Plugins: <a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
+</li>
+<li><p>Themes: <a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a></p>
+</li>
+</ul>
+<blockquote>
+<p>主题里面自带使用教程这里就不多说了</p>
+</blockquote>
+<p><strong><strong>七 其他一些设置</strong></strong></p>
+<p>详见 根目录下的 _config.yml</p>
+<p><strong><strong>八 开始写博客吧</strong></strong></p>
+<ul>
+<li><p>到根目录下执行如下命令hexo会帮我们在_posts下生成相关md文件，打开这个文件编辑就好了</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">'my-first-blog'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>完整文档格式如下</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: postName <span class="comment">#文章页面上的显示名称，一般是中文</span></div><div class="line">date: <span class="number">2017</span><span class="number">-09</span><span class="number">-06</span> <span class="number">13</span>:<span class="number">39</span>:<span class="number">39</span> <span class="comment">#文章生成时间，一般不改，当然也可以任意修改</span></div><div class="line">categories: 默认分类 <span class="comment">#分类</span></div><div class="line">tags: [tag1,tag2,tag3] <span class="comment">#文章标签，可空，多标签请用格式，注意:后面有个空格</span></div><div class="line">description: 附加一段文章摘要，字数最好在<span class="number">140</span>字以内，会出现在meta的description里面</div><div class="line">---</div><div class="line"></div><div class="line">以下是正文</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</div><div class="tags"><a href="/tags/hexo/">hexo</a><a href="/tags/env/">env</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">Inhalte</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/env-gitblog/">hexo+github搭建免费个人博客详细教程</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> Kategorien</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/环境配置/">环境配置</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> Tags</i></div><div class="tagcloud"><a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/env/" style="font-size: 15px;">env</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> Archiv</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> Blogroll</i></div><ul></ul><a href="http://weibo.com/lxzfranky/home?wvr=5" title="微博" target="_blank">微博</a><ul></ul><a href="https://github.com/lxzfranky" title="GitHub" target="_blank">GitHub</a><ul></ul><a href="https://www.zhihu.com/people/lxzfranky/activities" title="知乎" target="_blank">知乎</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">RSS</a> |  <a href="/about/">Über</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">lxzfranky.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>
