@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>c-types | Franky's Diary</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">c-types</h1><a id="logo" href="/.">Franky's Diary</a><p class="description">把有限的生命投入到我开心就好的事情中去</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">c-types</h1><div class="post-meta"><a href="/2017/07/12/c-types/#comments" class="comment-count"></a><p><span class="date">Jul 12, 2017</span><span><a href="/categories/C语言/" class="category">C语言</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>C语言基本数据类型简介</p>
+<p><img src="/images/types.jpg" alt="C语言数据类型"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">取值范围</th>
+<th style="text-align:center">所占字节数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">-128 ~ +127</td>
+<td style="text-align:center">(1 Byte)</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">-32767 ~ + 32768</td>
+<td style="text-align:center">(2 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned short</td>
+<td style="text-align:center">0 ~ 65536</td>
+<td style="text-align:center">(2 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">-2147483648 ~ 2147483647</td>
+<td style="text-align:center">(4 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned int</td>
+<td style="text-align:center">0 ~ 4294967295</td>
+<td style="text-align:center">(4 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">-2147483648 ~ 2147483647</td>
+<td style="text-align:center">(4 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">-9223372036854775808 ~ 9223372036854775807</td>
+<td style="text-align:center">(8 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">1.7 * 10^308</td>
+<td style="text-align:center">(8 Bytes)</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned int</td>
+<td style="text-align:center">0 ~ 4294967295 </td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">-9223372036854775808 ~ 9223372036854775807</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned long long</td>
+<td style="text-align:center">0 ~ 1844674407370955161</td>
+</tr>
+<tr>
+<td style="text-align:center">__int64</td>
+<td style="text-align:center">-9223372036854775808 ~ 9223372036854775807</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned __int64</td>
+<td style="text-align:center">0 ~ 18446744073709551615</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号属性</th>
+<th style="text-align:center">长度属性</th>
+<th style="text-align:center">基本型</th>
+<th style="text-align:center">所占位数</th>
+<th style="text-align:center">取值范围</th>
+<th style="text-align:center">输入符举例</th>
+<th style="text-align:center">输出符举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">char</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">-2^7 ~ 2^7-1</td>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">%c %d %u</td>
+</tr>
+<tr>
+<td style="text-align:center">signed</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">char</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">-2^7 ~ 2^7-1</td>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">%c %d %u</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">char</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0 ~ 2^8-1</td>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">%c %d %u</td>
+</tr>
+<tr>
+<td style="text-align:center">[signed]</td>
+<td style="text-align:center">short</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">-2^15 ~ 2^15-1</td>
+<td style="text-align:center">%hd</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned</td>
+<td style="text-align:center">short</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">0 ~ 2^16-1</td>
+<td style="text-align:center">%hu %ho%hx</td>
+</tr>
+<tr>
+<td style="text-align:center">[signed]</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">-2^31 ~ 2^31-1</td>
+<td style="text-align:center">%d</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">0 ~ 2^32-1</td>
+<td style="text-align:center">%u %o %x</td>
+</tr>
+<tr>
+<td style="text-align:center">[signed]</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">-2^31 ~ 2^31-1</td>
+<td style="text-align:center">%ld</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">0 ~ 2^32-1</td>
+<td style="text-align:center">%lu %lo %lx</td>
+</tr>
+<tr>
+<td style="text-align:center">[signed]</td>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">-2^63 ~ 2^63-1</td>
+<td style="text-align:center">%I64d</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned</td>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">[int]</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">0 ~ 2^64-1</td>
+<td style="text-align:center">%lld %llx</td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">+/- 3.40282e+038</td>
+<td style="text-align:center">%f %e %g</td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">double</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">+/- 1.79769e+308</td>
+<td style="text-align:center">%lf %le %lg</td>
+<td style="text-align:center">%f</td>
+<td>%e %g</td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">double</td>
+<td style="text-align:center">96</td>
+<td style="text-align:center">+/- 1.79769e+308</td>
+<td style="text-align:center">%Lf %Le %Lg</td>
+</tr>
+</tbody>
+</table>
+<p>几点说明： </p>
+<ol>
+<li><p>注意 ! 表中的每一行，代表一种基本类型。 “[]” 代表可省略。<br> 例如： char 、 signed char 、 unsigned char 是三种互不相同的类型；<br> int 、 short 、 long 也是三种互不相同的类型。 </p>
+</li>
+<li><p>char/signed char/unsigned char 型数据长度为 1 字节；<br> char 为有符号型，但与 signed char 是不同的类型。<br> 注意 ! 并不是所有编译器都这样处理， char 型数据长度不一定为 1 字节， char 也不一定为有符号型。 </p>
+</li>
+<li><p>将 char/signed char 转换为 int 时，会对最高符号位 1 进行扩展，从而造成运算问题。<br> 所以 , 如果要处理的数据中存在字节值大于 127 的情况，使用 unsigned char 较为妥当。<br> 程序中若涉及位运算，也应该使用 unsigned 型变量。 </p>
+</li>
+<li><p>char/signed char/unsigned char 输出时，使用格式符 %c （按字符方式）；  或使用 %d 、 %u 、 %x/%X 、 %o ，按整数方式输出； 输入时，应使用 %c ，若使用整数方式， Dev-C++ 会给出警告，不建议这样使用。 </p>
+</li>
+<li><p>int 的长度，是 16 位还是 32 位，与编译器字长有关。<br> 16 位编译器（如 TC 使用的编译器）下， int 为 16 位； 32 位编译器（如 VC 使用的编译器 cl.exe ）下， int 为 32位。 </p>
+</li>
+<li><p>整型数据可以使用 %d （有符号 10 进制）、 %o （无符号 8 进制）或 %x/%X （无符号 16 进制）方式输入输出。 而格式符 %u ，表示 unsigned ，即无符号 10 进制方式。 </p>
+</li>
+<li><p>整型前缀 h 表示 short ， l 表示 long 。<br> 输入输出 short/unsigned short 时，不建议直接使用 int 的格式符 %d/%u 等，要加前缀 h 。这个习惯性错误，来源于 TC 。 TC 下， int 的长度和默认符号属性，都与 short 一致，于是就把这两种类型当成是相同的，都用 int 方式进行输入输出。 </p>
+</li>
+<li><p>关于 long long 类型的输入输出：<br> “%lld” 和 “%llu” 是 linux 下 gcc/g++ 用于 long long int 类型 (64 bits) 输入输出的格式符。<br> 而 “%I64d” 和 “%I64u” 则是 Microsoft VC++ 库里用于输入输出 __int64 类型的格式说明。 </p>
+<p> Dev-C++ 使用的编译器是 Mingw32 ， Mingw32 是 x86-win32 gcc 子项目之一，编译器核心还是 linux 下的 gcc 。<br> 进行函数参数类型检查的是在编译阶段， gcc 编译器对格式字符串进行检查，显然它不认得 “%I64d” ，<br> 所以将给出警告 “unknown conversion type character `I’ in format” 。对于 “%lld” 和 “%llu” ， gcc 理所当然地接受了。 </p>
+<p> Mingw32 在编译期间使用 gcc 的规则检查语法，在连接和运行时使用的却是 Microsoft 库。<br> 这个库里的 printf 和 scanf 函数当然不认识 linux gcc 下 “%lld” 和 “%llu” ，但对 “%I64d” 和 “%I64u” ，它则是 乐意接受，并能正常工作的。 </p>
+</li>
+<li><p>浮点型数据输入时可使用 %f 、 %e/%E 或 %g/%G ， scanf 会根据输入数据形式，自动处理。<br> 输出时可使用 %f （普通方式）、 %e/%E （指数方式）或 %g/%G （自动选择）。 </p>
+</li>
+<li><p>浮点参数压栈的规则： float(4 字节 ) 类型扩展成 double(8 字节 ) 入栈。<br>所以在输入时，需要区分 float(%f) 与 double(%lf) ，而在输出时，用 %f 即可。<br>printf 函数将按照 double 型的规则对压入堆栈的 float( 已扩展成 double) 和 double 型数据进行输出。<br>如果在输出时指定 %lf 格式符， gcc/mingw32 编译器将给出一个警告。 </p>
+</li>
+<li><p>Dev-C++(gcc/mingw32) 可以选择 float 的长度，是否与 double 一致。 </p>
+</li>
+<li><p>前缀 L 表示 long （ double ）。<br>虽然 long double 比 double 长 4 个字节，但是表示的数值范围却是一样的。<br>long double 类型的长度、精度及表示范围与所使用的编译器、操作系统等有关。</p>
+</li>
+</ol>
+</div><div class="tags"><a href="/tags/C语言/">C语言</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><!--a.bds_more(href='#', data-cmd='more')--><!--a.bds_mshare(href="#",data-cmd="mshare",title="分享到一键分享")--><!--a.bds_fbook(href='#', data-cmd='fbook', title='分享到Facebook')--><!--a.bds_twi(href='#', data-cmd='twi', title='分享到Twitter')--><!--a.bds_linkedin(href='#', data-cmd='linkedin', title='分享到linkedin')--><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/08/01/php-laravel/" class="pre">Laravel5.4学习笔记</a></div><div id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zMDczOS83Mjky"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/env-zsh-style/">终端样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/11/algorithm-index/">基础算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/07/php-interface-absclass/">php中接口、抽象类区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/env-gitblog/">hexo+github搭建免费个人博客详细教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/26/algorithm-sort/">常用排序算法总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/algorithm-kmp/">KMP算法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/php-laravel/">Laravel5.4学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/12/c-types/">c-types</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C语言/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习/">PHP学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境配置/">环境配置</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法学习/">算法学习</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/kmp/" style="font-size: 15px;">kmp</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/C语言/" style="font-size: 15px;">C语言</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/环境/" style="font-size: 15px;">环境</a> <a href="/tags/zsh/" style="font-size: 15px;">zsh</a> <a href="/tags/laravel/" style="font-size: 15px;">laravel</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://weibo.com/lxzfranky/home?wvr=5" title="微博" target="_blank">微博</a><ul></ul><a href="https://github.com/lxzfranky" title="GitHub" target="_blank">GitHub</a><ul></ul><a href="https://www.zhihu.com/people/lxzfranky/activities" title="知乎" target="_blank">知乎</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><!--if theme.baidusitemap--><!--  a(href=config.root+"baidusitemap.xml")= __("baidusitemap")--><!--  |  |--><!--if theme.feed--><!--  a(href=config.root+"atom.xml")= __("rss")--><!--  |  |--><!--a(href=config.root+"about/")= __("about")--></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">lxzfranky.</a></span><!--span  Theme by--><!--  a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.--><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script>(function(d, s) {
+  var j, e = d.getElementsByTagName('body')[0];
+  if (typeof LivereTower === 'function') { return; }
+  j = d.createElement(s);
+  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+  j.async = true;
+  e.appendChild(j);
+})(document, 'script');
+</script></body></html>
