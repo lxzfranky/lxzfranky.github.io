@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>计算机为什么使用补码进行计算 | Franky's Diary</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">计算机为什么使用补码进行计算</h1><a id="logo" href="/.">Franky's Diary</a><p class="description">把有限的生命投入到我开心就好的事情中去</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">计算机为什么使用补码进行计算</h1><div class="post-meta"><a href="/2017/09/14/c-data-calculate/#comments" class="comment-count"></a><p><span class="date">Sep 14, 2017</span><span><a href="/categories/C语言/" class="category">C语言</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p><strong><em>机器数和真值</em></strong></p>
+<p><strong>机器数</strong></p>
+<p>一个数在计算机中的二进制表示形式, 叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1.</p>
+<p>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。那么，这里的 00000011 和 10000011 就是机器数。</p>
+<p><strong>真值</strong></p>
+<p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位1代表负，其真正数值是 -3 而不是形式值131（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。</p>
+<p>例：0000 0001的真值 = +000 0001 = +1，1000 0001的真值 = –000 0001 = –1</p>
+<p><strong>原码</strong></p>
+<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
+<p>[+1]原 = 0000 0001</p>
+<p>[-1]原 = 1000 0001</p>
+<p>第一位是符号位. 因为第一位是符号位, 所以8位二进制数的取值范围就是:</p>
+<p>[1111 1111 , 0111 1111]，即：</p>
+<p>[-127 , 127]</p>
+<p>原码是人脑最容易理解和计算的表示方式.</p>
+<p><strong>反码</strong></p>
+<p>反码的表示方法是：正数的反码是其本身；的反码是在其原码的基础上, 符号位不变，其余各个位取反。</p>
+<p>[+1] = [00000001]原 = [00000001]反</p>
+<p>[-1] = [10000001]原 = [11111110]反</p>
+<p>可见如果一个反码表示的是负数, 人脑无法直观的看出来它的数值. 通常要将其转换成原码再计算。</p>
+<p><strong>补码</strong></p>
+<p>补码的表示方法是：正数的补码就是其本身；的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
+<p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
+<p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
+<p>对于负数, 补码表示方式也是人脑无法直观看出其数值的. 通常也需要转换成原码在计算其数值.</p>
+<p><strong>为何要使用原码, 反码和补码</strong></p>
+<p>在开始深入学习前, 我的学习建议是先”死记硬背”上面的原码, 反码和补码的表示方式以及计算方法.</p>
+<p>现在我们知道了计算机可以有三种编码方式表示一个数. 对于正数因为三种编码方式的结果都相同:</p>
+<p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
+<p>所以不需要过多解释. 但是对于负数:</p>
+<p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
+<p>可见原码, 反码和补码是完全不同的. 既然原码才是被人脑直接识别并用于计算表示方式, 为何还会有反码和补码呢?</p>
+<p>首先, 因为人脑可以知道第一位是符号位, 在计算的时候我们会根据符号位, 选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机, 加减乘数已经是最基础的运算, 要设计的尽量简单. 计算机辨别”符号位”显然会让计算机的基础电路设计变得十分复杂! 于是人们想出了将符号位也参与运算的方法. 我们知道, 根据运算法则减去一个正数等于加上一个负数, 即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
+<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法. 首先来看原码。计算十进制的表达式: 1-1=0</p>
+<p>1 - 1 = 1 + (-1) = [00000001]原 + [10000001]原 = [10000010]原 = -2</p>
+<p>如果用原码表示, 让符号位也参与计算, 显然对于减法来说, 结果是不正确的.这也就是为何计算机内部不使用原码表示一个数.</p>
+<p>为了解决原码做减法的问题, 出现了反码。计算十进制的表达式:</p>
+<p>1-1=0</p>
+<p>1 - 1 = 1 + (-1)<br>= [0000 0001]原 + [1000 0001]原<br>= [0000 0001]反 + [1111 1110]反<br>= [1111 1111]反 = [1000 0000]原<br>= -0</p>
+<p>发现用反码计算减法, 结果的真值部分是正确的. 而唯一的问题其实就出现在”0”这个特殊的数值上. 虽然人们理解上+0和-0是一样的, 但是0带符号是没有任何意义的. 而且会有[0000 0000]原和[1000 0000]原两个编码表示0.</p>
+<p>于是补码的出现, 解决了0的符号以及两个编码的问题:</p>
+<p>1-1 = 1 + (-1)<br>= [0000 0001]原 + [1000 0001]原<br>= [0000 0001]补 + [1111 1111]补<br>= [0000 0000]补=[0000 0000]原</p>
+<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
+<p>(-1) + (-127) = [1000 0001]原 + [1111 1111]原<br>= [1111 1111]补 + [1000 0001]补<br>= [1000 0000]补</p>
+<p>-1-127的结果应该是-128, 在用补码运算的结果中, [1000 0000]补 就是-128. 但是注意因为实际上是使用以前的-0的补码来表示-128, 所以-128并没有原码和反码表示.(对-128的补码表示[1000 0000]补算出来的原码是[0000 0000]原, 这是不正确的)</p>
+<p>使用补码, 不仅仅修复了0的符号以及存在两个编码的问题, 而且还能够多表示一个最低数. 这就是为什么8位二进制, 使用原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
+<p>因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值.</p>
+<p><strong>补码表示的溢出问题</strong></p>
+<p>以下是本人的补充的理解，不知道是否正确：</p>
+<p>由于计算机中的数字用补码表示，例如8bit的byte类型的表示范围为：</p>
+<p>[-128, 127]</p>
+<p>0 = [0000 0000]（补）</p>
+<p>-128 = [1000 0000]（补）</p>
+<p>127 = [0111 1111]（补）</p>
+<p>当byte类型的变量超上限127时，如：</p>
+<p>+128 = -（-128）= 127 + 1<br>= [1111 1111]（补）+ [0000 0001]（补）<br>= [1000 0000]（补）<br>= -128</p>
+<p>+129 = 127 + 2<br>= [1111 1111]（补）+ [0000 0001]（补）<br>= [1000 0001]（补）<br>= [1111 1111]（原）<br>= -127</p>
+<p>当byte类型的变量超过下限-128时：</p>
+<p>-129 = -128 - 1<br>= [1000 0000]（补) - [0000 0001]（补）<br>= [0111 1111]（补）<br>= 127</p>
+<p>-130 = -128 - 2<br>= [1000 0000]（补) - [0000 0010]（补）<br>= [0111 1110]（补）<br>= 126</p>
+</div><div class="tags"><a href="/tags/补码/">补码</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/09/12/env-zsh-style/" class="next">终端样式</a></div><div id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zMDczOS83Mjky"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/14/c-data-calculate/">计算机为什么使用补码进行计算</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/env-zsh-style/">终端样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/11/algorithm-index/">基础算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/07/php-interface-absclass/">php中接口、抽象类区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/env-gitblog/">hexo+github搭建免费个人博客详细教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/26/algorithm-sort/">常用排序算法总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/algorithm-kmp/">KMP算法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/php-laravel/">Laravel5.4学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/c-ascii/">ASCII可显示字符</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/12/c-types/">C语言基本数据类型简介</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C语言/">C语言</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习/">PHP学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境配置/">环境配置</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法学习/">算法学习</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/环境/" style="font-size: 15px;">环境</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/常用查询/" style="font-size: 15px;">常用查询</a> <a href="/tags/zsh/" style="font-size: 15px;">zsh</a> <a href="/tags/kmp/" style="font-size: 15px;">kmp</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/laravel/" style="font-size: 15px;">laravel</a> <a href="/tags/补码/" style="font-size: 15px;">补码</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://zhgxun.github.io/" title="广训" target="_blank">广训</a><ul></ul><a href="http://lyj1215.com/" title="亚娟" target="_blank">亚娟</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><!--if theme.baidusitemap--><!--  a(href=config.root+"baidusitemap.xml")= __("baidusitemap")--><!--  |  |--><!--if theme.feed--><!--  a(href=config.root+"atom.xml")= __("rss")--><!--  |  |--><!--a(href=config.root+"about/")= __("about")--></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">lxzfranky.</a></span><!--span  Theme by--><!--  a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.--><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>(function(d, s) {
+  var j, e = d.getElementsByTagName('body')[0];
+  if (typeof LivereTower === 'function') { return; }
+  j = d.createElement(s);
+  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+  j.async = true;
+  e.appendChild(j);
+})(document, 'script');
+</script></body></html>
