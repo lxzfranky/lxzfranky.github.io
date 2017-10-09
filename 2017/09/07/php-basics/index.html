@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>PHP常见面试题 | Franky's Diary</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">PHP常见面试题</h1><a id="logo" href="/.">Franky's Diary</a><p class="description">把有限的生命投入到我开心就好的事情中去</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">PHP常见面试题</h1><div class="post-meta"><a href="/2017/09/07/php-basics/#comments" class="comment-count"></a><p><span class="date">Sep 07, 2017</span><span><a href="/categories/PHP学习/" class="category">PHP学习</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>问题列表</p>
+<ul>
+<li><a href="#q-1">php中接口、抽象类区别</a></li>
+<li><a href="#q-2">Http请求与相应</a></li>
+<li><a href="#q-3">Innodb与MyISAM区别</a></li>
+<li><a href="#q-4">MySQL类型float double decimal的区别</a></li>
+<li><a href="#q-5">MYSQL性能优化方案</a></li>
+<li><a href="#q-6">MYSQL慢查询问题</a></li>
+<li><a href="#q-7">MYSQL分库，分表，主从，集群，负载均衡器</a></li>
+<li><a href="#q-8">MYSQL存储结构</a></li>
+<li><a href="#q-9">MYSQL双机热备和负载均衡</a></li>
+<li><a href="#q-10">MYSQL索引相关知识</a></li>
+<li><a href="#q-11"></a></li>
+<li><a href="#q-12"></a></li>
+</ul>
+<h2 id="php中接口、抽象类区别"><a href="#php中接口、抽象类区别" class="headerlink" title="php中接口、抽象类区别"></a><a name="q-1"></a>php中接口、抽象类区别</h2><ul>
+<li>接口</li>
+</ul>
+<ol>
+<li>对接口的使用是通过关键字implements</li>
+<li>接口不能定义成员变量（包括类静态变量），能定义常量</li>
+<li>子类必须实现接口定义的所有方法</li>
+<li>接口只能定义不能实现该方法</li>
+<li>接口没有构造函数</li>
+<li>接口中的方法和实现它的类默认都是public类型的</li>
+</ol>
+<ul>
+<li>抽象类</li>
+</ul>
+<ol>
+<li>对抽象类的使用是通过关键字extends</li>
+<li>不能被实例化，可以定义子类必须实现的方法</li>
+<li>子类必须定义父类中的所有抽象方法，这些方法的访问控制必须和父类中一样（或者更为宽松）</li>
+<li>如一个类中有一个抽象方法，则该类必须定义为抽象类</li>
+<li>抽象类可以有构造函数</li>
+<li>抽象类中的方法可以使用private,protected,public来修饰。</li>
+<li>一个类可以同时实现多个接口，但一个类只能继承于一个抽象类。</li>
+</ol>
+<h2 id="Http请求与相应"><a href="#Http请求与相应" class="headerlink" title="Http请求与相应"></a><a name="q-2"></a>Http请求与相应</h2><ul>
+<li>HTTP请求</li>
+</ul>
+<p>HTTP请求的格式如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">request-line</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">headers</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">blank</span> <span class="attr">line</span>&gt;</span></div><div class="line">[<span class="tag">&lt;<span class="name">request-body</span>&gt;</span>]</div></pre></td></tr></table></figure>
+<p>在HTTP请求中，第一行必须是一个请求行（request line），用来说明请求类型、要访问的资源以及使用的HTTP版本。紧接着是一个首部（header）小节，用来说明服务器要使用的附加信息。在首部之后是一个空行，再此之后可以添加任意的其他数据[称之为主体（body）</p>
+<p>在HTTP中，定义了多种请求类型，通常我们关心的只有GET请求和POST请求。只要在Web浏览器上输入一个URL，浏览器就将基于该URL向服务器发送一个GET请求，以告诉服务器获取并返回什么资源。</p>
+<p>对于www.baidu.com的GET请求如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GET / HTTP/1.1</div><div class="line">Host: www.baidu.com</div><div class="line">User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)</div><div class="line">Gecko/20050225 Firefox/1.0.1</div><div class="line">Connection: Keep-Alive</div></pre></td></tr></table></figure>
+<p>请求行的第一部分说明了该请求是GET请求。该行的第二部分是一个斜杠（/），用来说明请求的是该域名的根目录。该行的最后一部分说明使用的是HTTP 1.1版本（另一个可选项是1.0）。</p>
+<p>第二行是请求的第一个首部，HOST。首部HOST将指出请求的目的地。结合HOST和上一行中的斜杠（/），可以通知服务器请求的是www.baidu.com/（HTTP 1.1才需要使用首部HOST，而原来的1.0版本则不需要使用）。</p>
+<p>第三行中包含的是首部User-Agent，服务器端和客户端脚本都能够访问它，它是浏览器类型检测逻辑的重要基础。该信息由你使用的浏览器来定义（在本例中是Firefox 1.0.1），并且在每个请求中将自动发送。</p>
+<p>最后一行是首部Connection，通常将浏览器操作设置为Keep-Alive（当然也可以设置为其他值）。注意，在最后一个首部之后有一个空行。即使不存在请求主体，这个空行也是必需的。</p>
+<p>要发送GET请求的参数，则必须将这些额外的信息附在URL本身的后面。其格式类似于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">URL ? name1=value1&amp;name2=value2&amp;..&amp;nameN=valueN</div></pre></td></tr></table></figure>
+<p>该信息称之为查询字符串（query string），它将会复制在HTTP请求的请求行中，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GET /books/?name=Professional%20Ajax HTTP/1.1</div><div class="line">Host: www.baidu.com</div><div class="line">User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)</div><div class="line">Gecko/20050225 Firefox/1.0.1</div><div class="line">Connection: Keep-Alive</div></pre></td></tr></table></figure>
+<p>注意，为了将文本“Professional Ajax”作为URL的参数，需要编码处理其内容，将空格替换成%20，这称为URL编码（URL encoding），常用于HTTP的许多地方（JavaScript提供了内建的函数来处理URL编码和解码）。“名称—值”（name—value）对用 &amp; 隔开。绝大部分的服务器端技术能够自动对请求主体进行解码，并为这些值的访问提供一些逻辑方式。当然，如何使用这些数据还是由服务器决定的。</p>
+<p>另一方面，POST请求在请求主体中为服务器提供了一些附加的信息。通常，当填写一个在线表单并提交它时，这些填入的数据将以POST请求的方式发送给服务器。</p>
+<p>以下就是一个典型的POST请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">POST / HTTP/1.1</div><div class="line">Host: www.baidu.com</div><div class="line">User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)</div><div class="line">Gecko/20050225 Firefox/1.0.1</div><div class="line">Content-Type: application/x-www-form-urlencoded</div><div class="line">Content-Length: 40</div><div class="line">Connection: Keep-Alive</div><div class="line">name=Professional%20Ajax&amp;publisher=Wiley</div></pre></td></tr></table></figure>
+<p>从上面可以发现， POST请求和GET请求之间有一些区别。首先，请求行开始处的GET改为了POST，以表示不同的请求类型。你会发现首部Host和User-Agent仍然存在，在后面有两个新行。其中首部Content-Type说明了请求主体的内容是如何编码的。浏览器始终以application/ x-www-form- urlencoded的格式编码来传送数据，这是针对简单URL编码的MIME类型。首部Content-Length说明了请求主体的字节数。在首部Connection后是一个空行，再后面就是请求主体。与大多数浏览器的POST请求一样，这是以简单的“名称—值”对的形式给出的，其中name是Professional Ajax，publisher是Wiley。你可以以同样的格式来组织URL的查询字符串参数。</p>
+<p>下面是一些最常见的请求头：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Accept：浏览器可接受的MIME类型。</div><div class="line">Accept - Charset：浏览器可接受的字符集。</div><div class="line">Accept - Encoding：浏览器能够进行解码的数据编码方式，比如gzip。Servlet能够向支持gzip的浏览器返回经gzip编码的HTML页面。许多情形下这可以减少5到10倍的下载时间。</div><div class="line">Accept - Language：浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。</div><div class="line">Authorization：授权信息，通常出现在对服务器发送的WWW - Authenticate头的应答中。</div><div class="line">Connection：表示是否需要持久连接。如果Servlet看到这里的值为“Keep - Alive”，或者看到请求使用的是HTTP 1.1（HTTP 1.1默认进行持久连接），它就可以利用持久连接的优点，当页面包含多个元素时（例如Applet，图片），显著地减少下载所需要的时间。要实现这一点，Servlet需要在应答中发送一个Content - Length头，最简单的实现方法是：先把内容写入ByteArrayOutputStream，然后在正式写出内容之前计算它的大小。</div><div class="line">Content - Length：表示请求消息正文的长度。</div><div class="line">Cookie：这是最重要的请求头信息之一，参见后面《Cookie处理》一章中的讨论。</div><div class="line">From：请求发送者的email地址，由一些特殊的Web客户程序使用，浏览器不会用到它。</div><div class="line">Host：初始URL中的主机和端口。</div><div class="line">If - Modified - Since：只有当所请求的内容在指定的日期之后又经过修改才返回它，否则返回304“Not Modified”应答。</div><div class="line">Pragma：指定“no - cache”值表示服务器必须返回一个刷新后的文档，即使它是代理服务器而且已经有了页面的本地拷贝。</div><div class="line">Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。</div><div class="line">User - Agent：浏览器类型，如果Servlet返回的内容与浏览器类型有关则该值非常有用。</div><div class="line">UA - Pixels，UA - Color，UA - OS，UA - CPU：由某些版本的IE浏览器所发送的非标准的请求头，表示屏幕大小、颜色深度、操作系统和CPU类型。</div></pre></td></tr></table></figure>
+<ul>
+<li>HTTP响应</li>
+</ul>
+<p>如下所示，HTTP响应的格式与请求的格式十分类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;status-line&gt;</div><div class="line">&lt;headers&gt;</div><div class="line">&lt;blank line&gt;</div><div class="line">[&lt;response-body&gt;]</div></pre></td></tr></table></figure>
+<p>正如你所见，在响应中唯一真正的区别在于第一行中用状态信息代替了请求信息。状态行（status line）通过提供一个状态码来说明所请求的资源情况。</p>
+<p>以下就是一个HTTP响应的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Sat, 31 Dec 2005 23:59:59 GMT</div><div class="line">Content-Type: text/html;charset=ISO-8859-1</div><div class="line">Content-Length: 122</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;Wrox Homepage&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;!-- body goes here --&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在本例中，状态行给出的HTTP状态代码是200，以及消息OK。状态行始终包含的是状态码和相应的简短消息，以避免混乱。最常用的状态码有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">200 (OK): 找到了该资源，并且一切正常。</div><div class="line">304 (NOT MODIFIED): 该资源在上次请求之后没有任何修改。这通常用于浏览器的缓存机制。</div><div class="line">401 (UNAUTHORIZED): 客户端无权访问该资源。这通常会使得浏览器要求用户输入用户名和密码，以登录到服务器。</div><div class="line">403 (FORBIDDEN): 客户端未能获得授权。这通常是在401之后输入了不正确的用户名或密码。</div><div class="line">404 (NOT FOUND): 在指定的位置不存在所申请的资源。</div></pre></td></tr></table></figure>
+<p>在状态行之后是一些首部。通常，服务器会返回一个名为Data的首部，用来说明响应生成的日期和时间（服务器通常还会返回一些关于其自身的信息，尽管并非是必需的）。</p>
+<p>接下来的两个首部大家应该熟悉，就是与POST请求中一样的Content-Type和Content-Length。在本例中，首部Content-Type指定了MIME类型HTML（text/html），其编码类型是ISO-8859-1（这是针对美国英语资源的编码标准）。响应主体所包含的就是所请求资源的HTML源文件（尽管还可能包含纯文本或其他资源类型的二进制数据）。浏览器将把这些数据显示给用户。</p>
+<p>注意，这里并没有指明针对该响应的请求类型，不过这对于服务器并不重要。客户端知道每种类型的请求将返回什么类型的数据，并决定如何使用这些数据。</p>
+<p>扩展参考</p>
+<ul>
+<li><a href="http://tools.jb51.net/table/http_request_method" target="_blank" rel="external">HTTP请求方法对照表</a></li>
+<li><a href="http://tools.jb51.net/table/http_header" target="_blank" rel="external">HTTP响应头和请求头信息对照表</a></li>
+<li><a href="http://tools.jb51.net/table/http_status_code" target="_blank" rel="external">HTTP状态码对照表</a></li>
+</ul>
+<h2 id="Innodb与MyISAM区别"><a href="#Innodb与MyISAM区别" class="headerlink" title="Innodb与MyISAM区别"></a><a name="q-3"></a>Innodb与MyISAM区别</h2><ol>
+<li>存储结构<br>MyISAM：每个MyISAM在磁盘上存储成三个文件。第一个文件的名字以表的名字开始，扩展名指出文件类型。.frm文件存储表定义。数据文件的扩展名为.MYD (MYData)。索引文件的扩展名是.MYI(MYIndex)。<br>InnoDB：所有的表都保存在同一个数据文件中（也可能是多个文件，或者是独立的表空间文件），InnoDB表的大小只受限于操作系统文件的大小，一般为2GB。</li>
+<li>存储空间<br>MyISAM：可被压缩，存储空间较小。支持三种不同的存储格式：静态表(默认，但是注意数据末尾不能有空格，会被去掉)、动态表、压缩表。<br>InnoDB：需要更多的内存和存储，它会在主内存中建立其专用的缓冲池用于高速缓冲数据和索引。</li>
+<li>可移植性、备份及恢复<br>MyISAM：数据是以文件的形式存储，所以在跨平台的数据转移中会很方便。在备份和恢复时可单独针对某个表进行操作。<br>InnoDB：免费的方案可以是拷贝数据文件、备份 binlog，或者用 mysqldump，在数据量达到几十G的时候就相对痛苦了。</li>
+<li>事务支持<br>MyISAM：强调的是性能，每次查询具有原子性,其执行数度比InnoDB类型更快，但是不提供事务支持。<br>InnoDB：提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</li>
+<li>AUTO_INCREMENT<br>MyISAM：可以和其他字段一起建立联合索引。引擎的自动增长列必须是索引，如果是组合索引，自动增长可以不是第一列，他可以根据前面几列进行排序后递增。<br>InnoDB：InnoDB中必须包含只有该字段的索引。引擎的自动增长列必须是索引，如果是组合索引也必须是组合索引的第一列。</li>
+<li>表锁差异<br>MyISAM：只支持表级锁，用户在操作myisam表时，select，update，delete，insert语句都会给表自动加锁，如果加锁以后的表满足insert并发的情况下，可以在表的尾部插入新的数据。<br>InnoDB：支持事务和行级锁，是innodb的最大特色。行锁大幅度提高了多用户并发操作的新能。但是InnoDB的行锁，只是在WHERE的主键是有效的，非主键的WHERE都会锁全表的。</li>
+<li>全文索引<br>MyISAM：支持 FULLTEXT类型的全文索引<br>InnoDB：不支持FULLTEXT类型的全文索引，但是innodb可以使用sphinx插件支持全文索引，并且效果更好。</li>
+<li>表主键<br>MyISAM：允许没有任何索引和主键的表存在，索引都是保存行的地址。<br>InnoDB：如果没有设定主键或者非空唯一索引，就会自动生成一个6字节的主键(用户不可见)，数据是主索引的一部分，附加索引保存的是主索引的值。</li>
+<li>表的具体行数<br>MyISAM：保存有表的总行数，如果select count(*) from table;会直接取出出该值。<br>InnoDB：没有保存表的总行数，如果使用select count(*) from table；就会遍历整个表，消耗相当大，但是在加了wehre条件后，myisam和innodb处理的方式都一样。</li>
+<li>CURD操作<br>MyISAM：如果执行大量的SELECT，MyISAM是更好的选择。<br>InnoDB：如果你的数据执行大量的INSERT或UPDATE，出于性能方面的考虑，应该使用InnoDB表。DELETE 从性能上InnoDB更优，但DELETE FROM table时，InnoDB不会重新建立表，而是一行一行的删除，在innodb上如果要清空保存有大量数据的表，最好使用truncate table这个命令。</li>
+<li>外键<br>MyISAM：不支持<br>InnoDB：支持<br>通过上述的分析，基本上可以考虑使用InnoDB来替代MyISAM引擎了，原因是InnoDB自身很多良好的特点，比如事务支持、存储 过程、视图、行级锁定等等，在并发很多的情况下，相信InnoDB的表现肯定要比MyISAM强很多。另外，任何一种表都不是万能的，只用恰当的针对业务类型来选择合适的表类型，才能最大的发挥MySQL的性能优势。如果不是很复杂的Web应用，非关键应用，还是可以继续考虑MyISAM的，这个具体情况可以自己斟酌。</li>
+</ol>
+<h2 id="MySQL类型float-double-decimal的区别"><a href="#MySQL类型float-double-decimal的区别" class="headerlink" title="MySQL类型float double decimal的区别"></a><a name="q-4"></a>MySQL类型float double decimal的区别</h2><h2 id="MySQL性能优化方案"><a href="#MySQL性能优化方案" class="headerlink" title="MySQL性能优化方案"></a><a name="q-5"></a>MySQL性能优化方案</h2><p>查看Mysql配置参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status;</div><div class="line">mysql&gt; show variables;</div></pre></td></tr></table></figure>
+<ul>
+<li>慢查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;slow%&apos;;</div><div class="line">+------------------+-------+</div><div class="line">| variable_name　　　　 | value |</div><div class="line">+------------------+-------+</div><div class="line">| log_slow_queries | on　　　　 |</div><div class="line">| slow_launch_time | 2　　　　　 |</div><div class="line">+------------------+-------+</div><div class="line"></div><div class="line">mysql&gt; show global status like &apos;slow%&apos;;</div><div class="line">+---------------------+-------+</div><div class="line">| variable_name　　　　　　　 | value |</div><div class="line">+---------------------+-------+</div><div class="line">| slow_launch_threads | 0　　　　　 |</div><div class="line">| slow_queries　　　　　　　　 | 4148 |</div><div class="line">+---------------------+-------+</div></pre></td></tr></table></figure>
+<ul>
+<li>连接数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;max_connections&apos;;</div><div class="line">+-----------------+-------+</div><div class="line">| variable_name　　　 | value |</div><div class="line">+-----------------+-------+</div><div class="line">| max_connections | 256　　 |</div><div class="line">+-----------------+-------+</div><div class="line"></div><div class="line">mysql&gt; show global status like &apos;max_used_connections&apos;; //服务器最大连接数</div><div class="line">mysql&gt; show global status like &apos;max_used_connections&apos;; //服务器响应的最大连接数</div><div class="line"></div><div class="line">比较理想的设置</div><div class="line">max_used_connections / max_connections * 100% ≈ 85%</div></pre></td></tr></table></figure>
+<ul>
+<li>key_buffer_size</li>
+</ul>
+<p>key_buffer_size是对myisam表性能影响最大的一个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;key_buffer_size&apos;;</div><div class="line"></div><div class="line">+-----------------+------------+</div><div class="line">| variable_name　　　 | value　　　　　　 |</div><div class="line">+-----------------+------------+</div><div class="line">| key_buffer_size | 536870912 |</div><div class="line">+-----------------+------------+</div></pre></td></tr></table></figure>
+<p>分配了512mb内存给key_buffer_size，我们再看一下key_buffer_size的使用情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;key_read%&apos;;</div><div class="line">+------------------------+-------------+</div><div class="line">| variable_name　　　　　　　　　　 | value　　　　　　　 |</div><div class="line">+------------------------+-------------+</div><div class="line">| key_read_requests　　　　　　 | 27813678764 |</div><div class="line">| key_reads　　　　　　　　　　　　　　 | 6798830　　　　　 |</div><div class="line">+------------------------+-------------+</div></pre></td></tr></table></figure>
+<p>一共有27813678764个索引读取请求，有6798830个请求在内存中没有找到直接从硬盘读取索引，计算索引未命中缓存的概率：</p>
+<p>key_cache_miss_rate ＝ key_reads / key_read_requests * 100%</p>
+<p>比 如上面的数据，key_cache_miss_rate为0.0244%，4000个索引读取请求才有一个直接读硬盘，已经很bt 了，key_cache_miss_rate在0.1%以下都很好（每1000个请求有一个直接读硬盘），如果key_cache_miss_rate在 0.01%以下的话，key_buffer_size分配的过多，可以适当减少。</p>
+<p>mysql服务器还提供了key<em>blocks</em>*参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;key_blocks_u%&apos;;</div><div class="line">+------------------------+-------------+</div><div class="line">| variable_name　　　　　　　　　　 | value　　　　　　　 |</div><div class="line">+------------------------+-------------+</div><div class="line">| key_blocks_unused　　　　　　 | 0　　　　　　　　　　　 |</div><div class="line">| key_blocks_used　　　　　　　　 | 413543　　　　　　 |</div><div class="line">+------------------------+-------------+</div></pre></td></tr></table></figure>
+<p>key_blocks_unused 表示未使用的缓存簇(blocks)数，key_blocks_used表示曾经用到的最大的blocks数，比如这台服务器，所有的缓存都用到了，要么 增加key_buffer_size，要么就是过渡索引了，把缓存占满了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">比较理想的设置：</div><div class="line">key_blocks_used / (key_blocks_unused + key_blocks_used) * 100% ≈ 80%</div></pre></td></tr></table></figure>
+<ul>
+<li>临时表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;created_tmp%&apos;;</div><div class="line">+-------------------------+---------+</div><div class="line">| variable_name　　　　　　　　　　　 | value　　　 |</div><div class="line">+-------------------------+---------+</div><div class="line">| created_tmp_disk_tables | 21197　　　 |</div><div class="line">| created_tmp_files　　　　　　　 | 58　　　　　　 |</div><div class="line">| created_tmp_tables　　　　　　 | 1771587 |</div><div class="line">+-------------------------+---------+</div></pre></td></tr></table></figure>
+<p>每次创建临时表，created_tmp_tables增加，如果是在磁盘上创建临时表，created_tmp_disk_tables也增加,created_tmp_files表示mysql服务创建的临时文件文件数，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">比较理想的配置是：</div><div class="line">created_tmp_disk_tables / created_tmp_tables * 100% &lt;= 25%比如上面的服务器created_tmp_disk_tables / created_tmp_tables * 100% ＝ 1.20%，应该相当好了。</div></pre></td></tr></table></figure>
+<p>我们再看一下mysql服务器对临时表的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables where variable_name in (&apos;tmp_table_size&apos;, &apos;max_heap_table_size&apos;);</div><div class="line">+---------------------+-----------+</div><div class="line">| variable_name　　　　　　　 | value　　　　　 |</div><div class="line">+---------------------+-----------+</div><div class="line">| max_heap_table_size | 268435456 |</div><div class="line">| tmp_table_size　　　　　　 | 536870912 |</div><div class="line">+---------------------+-----------+</div></pre></td></tr></table></figure>
+<p>只有256mb以下的临时表才能全部放内存，超过的就会用到硬盘临时表。</p>
+<ul>
+<li>open table情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;open%tables%&apos;;</div><div class="line">+---------------+-------+</div><div class="line">| variable_name | value |</div><div class="line">+---------------+-------+</div><div class="line">| open_tables　　　 | 919　　　 |</div><div class="line">| opened_tables | 1951　 |</div><div class="line">+---------------+-------+</div></pre></td></tr></table></figure>
+<p>open_tables 表示打开表的数量，opened_tables表示打开过的表数量，如果opened_tables数量过大，说明配置中 table_cache(5.1.3之后这个值叫做table_open_cache)值可能太小，我们查询一下服务器table_cache值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;table_cache&apos;;</div><div class="line">+---------------+-------+</div><div class="line">| variable_name | value |</div><div class="line">+---------------+-------+</div><div class="line">| table_cache　　　 | 2048　 |</div><div class="line">+---------------+-------+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">比较合适的值为：</div><div class="line">open_tables / opened_tables * 100% &gt;= 85%</div><div class="line">open_tables / table_cache * 100% &lt;= 95%</div></pre></td></tr></table></figure>
+<ul>
+<li>进程使用情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;thread%&apos;;</div><div class="line">+-------------------+-------+</div><div class="line">| variable_name　　　　　 | value |</div><div class="line">+-------------------+-------+</div><div class="line">| threads_cached　　　　 | 46　　　　 |</div><div class="line">| threads_connected | 2　　　　　 |</div><div class="line">| threads_created　　　 | 570　　　 |</div><div class="line">| threads_running　　　 | 1　　　　　 |</div><div class="line">+-------------------+-------+</div></pre></td></tr></table></figure>
+<p>如 果我们在mysql服务器配置文件中设置了thread_cache_size，当客户端断开之后，服务器处理此客户的线程将会缓存起来以响应下一个客户 而不是销毁（前提是缓存数未达上限）。threads_created表示创建过的线程数，如果发现threads_created值过大的话，表明 mysql服务器一直在创建线程，这也是比较耗资源，可以适当增加配置文件中thread_cache_size值，查询服务器 thread_cache_size配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;thread_cache_size&apos;;</div><div class="line">+-------------------+-------+</div><div class="line">| variable_name　　　　　 | value |</div><div class="line">+-------------------+-------+</div><div class="line">| thread_cache_size | 64　　　　 |</div><div class="line">+-------------------+-------+</div></pre></td></tr></table></figure>
+<p>示例中的服务器还是挺健康的。</p>
+<ul>
+<li>查询缓存(query cache)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;qcache%&apos;;</div><div class="line">+-------------------------+-----------+</div><div class="line">| variable_name　　　　　　　　　　　 | value　　　　　 |</div><div class="line">+-------------------------+-----------+</div><div class="line">| qcache_free_blocks　　　　　　 | 22756　　　　　 |</div><div class="line">| qcache_free_memory　　　　　　 | 76764704　 |</div><div class="line">| qcache_hits　　　　　　　　　　　　　 | 213028692 |</div><div class="line">| qcache_inserts　　　　　　　　　　 | 208894227 |</div><div class="line">| qcache_lowmem_prunes　　　　 | 4010916　　　 |</div><div class="line">| qcache_not_cached　　　　　　　 | 13385031　 |</div><div class="line">| qcache_queries_in_cache | 43560　　　　　 |</div><div class="line">| qcache_total_blocks　　　　　 | 111212　　　　 |</div><div class="line">+-------------------------+-----------+</div></pre></td></tr></table></figure>
+<p>mysql查询缓存变量解释：</p>
+<p>qcache_free_blocks：缓存中相邻内存块的个数。数目大说明可能有碎片。flush query cache会对缓存中的碎片进行整理，从而得到一个空闲块。</p>
+<p>qcache_free_memory：缓存中的空闲内存。</p>
+<p>qcache_hits：每次查询在缓存中命中时就增大</p>
+<p>qcache_inserts：每次插入一个查询时就增大。命中次数除以插入次数就是不中比率。</p>
+<p>qcache_lowmem_prunes： 缓存出现内存不足并且必须要进行清理以便为更多查询提供空间的次数。这个数字最好长时间来看；如果这个数字在不断增长，就表示可能碎片非常严重，或者内存 很少。（上面的 free_blocks和free_memory可以告诉您属于哪种情况）</p>
+<p>qcache_not_cached：不适合进行缓存的查询的数量，通常是由于这些查询不是 select 语句或者用了now()之类的函数。</p>
+<p>qcache_queries_in_cache：当前缓存的查询（和响应）的数量。</p>
+<p>qcache_total_blocks：缓存中块的数量。</p>
+<p>我们再查询一下服务器关于query_cache的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;query_cache%&apos;;</div><div class="line">+------------------------------+-----------+</div><div class="line">| variable_name　　　　　　　　　　　　　　　　 | value　　　　　 |</div><div class="line">+------------------------------+-----------+</div><div class="line">| query_cache_limit　　　　　　　　　　　　 | 2097152　　　 |</div><div class="line">| query_cache_min_res_unit　　　　　 | 4096　　　　　　 |</div><div class="line">| query_cache_size　　　　　　　　　　　　　 | 203423744 |</div><div class="line">| query_cache_type　　　　　　　　　　　　　 | on　　　　　　　　 |</div><div class="line">| query_cache_wlock_invalidate | off　　　　　　　 |</div><div class="line">+------------------------------+-----------+</div></pre></td></tr></table></figure>
+<p>各字段的解释：</p>
+<p>query_cache_limit：超过此大小的查询将不缓存</p>
+<p>query_cache_min_res_unit：缓存块的最小大小</p>
+<p>query_cache_size：查询缓存大小</p>
+<p>query_cache_type：缓存类型，决定缓存什么样的查询，示例中表示不缓存 select sql_no_cache 查询</p>
+<p>query_cache_wlock_invalidate：当有其他客户端正在对myisam表进行写操作时，如果查询在query cache中，是否返回cache结果还是等写操作完成再读表获取结果。</p>
+<p>query_cache_min_res_unit的配置是一柄”双刃剑”，默认是4kb，设置值大对大数据查询有好处，但如果你的查询都是小数据查询，就容易造成内存碎片和浪费。</p>
+<p>查询缓存碎片率 = qcache_free_blocks / qcache_total_blocks * 100%</p>
+<p>如果查询缓存碎片率超过20%，可以用flush query cache整理缓存碎片，或者试试减小query_cache_min_res_unit，如果你的查询都是小数据量的话。</p>
+<p>查询缓存利用率 = (query_cache_size - qcache_free_memory) / query_cache_size * 100%</p>
+<p>查询缓存利用率在25%以下的话说明query_cache_size设置的过大，可适当减小；查询缓存利用率在80％以上而且qcache_lowmem_prunes &gt; 50的话说明query_cache_size可能有点小，要不就是碎片太多。</p>
+<p>查询缓存命中率 = (qcache_hits - qcache_inserts) / qcache_hits * 100%</p>
+<p>示例服务器 查询缓存碎片率 ＝ 20.46％，查询缓存利用率 ＝ 62.26％，查询缓存命中率 ＝ 1.94％，命中率很差，可能写操作比较频繁吧，而且可能有些碎片。</p>
+<ul>
+<li>排序使用情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;sort%&apos;;</div><div class="line">+-------------------+------------+</div><div class="line">| variable_name　　　　　 | value　　　　　　 |</div><div class="line">+-------------------+------------+</div><div class="line">| sort_merge_passes | 29　　　　　　　　　 |</div><div class="line">| sort_range　　　　　　　　 | 37432840　　　 |</div><div class="line">| sort_rows　　　　　　　　　 | 9178691532 |</div><div class="line">| sort_scan　　　　　　　　　 | 1860569　　　　 |</div><div class="line">+-------------------+------------+</div></pre></td></tr></table></figure>
+<p>sort_merge_passes 包括两步。mysql 首先会尝试在内存中做排序，使用的内存大小由系统变量 sort_buffer_size 决定，如果它的大小不够把所有的记录都读到内存中，mysql 就会把每次在内存中排序的结果存到临时文件中，等 mysql 找到所有记录之后，再把临时文件中的记录做一次排序。这再次排序就会增加 sort_merge_passes。实际上，mysql 会用另一个临时文件来存再次排序的结果，所以通常会看到 sort_merge_passes 增加的数值是建临时文件数的两倍。因为用到了临时文件，所以速度可能会比较慢，增加 sort_buffer_size 会减少 sort_merge_passes 和 创建临时文件的次数。但盲目的增加 sort_buffer_size 并不一定能提高速度</p>
+<ul>
+<li>文件打开数(open_files)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;open_files&apos;;</div><div class="line">+---------------+-------+</div><div class="line">| variable_name | value |</div><div class="line">+---------------+-------+</div><div class="line">| open_files　　　　 | 1410　 |</div><div class="line">+---------------+-------+</div><div class="line"></div><div class="line">mysql&gt; show variables like &apos;open_files_limit&apos;;</div><div class="line">+------------------+-------+</div><div class="line">| variable_name　　　　 | value |</div><div class="line">+------------------+-------+</div><div class="line">| open_files_limit | 4590　 |</div><div class="line">+------------------+-------+</div><div class="line"></div><div class="line">比较合适的设置：open_files / open_files_limit * 100% &lt;= 75％</div></pre></td></tr></table></figure>
+<ul>
+<li>表锁情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;table_locks%&apos;;</div><div class="line">+-----------------------+-----------+</div><div class="line">| variable_name　　　　　　　　　 | value　　　　　 |</div><div class="line">+-----------------------+-----------+</div><div class="line">| table_locks_immediate | 490206328 |</div><div class="line">| table_locks_waited　　　　 | 2084912　　　 |</div><div class="line">+-----------------------+-----------+</div></pre></td></tr></table></figure>
+<p>table_locks_immediate表示立即释放表锁数，table_locks_waited表示需要等待的表锁数，如果 table_locks_immediate / table_locks_waited &gt; 5000，最好采用innodb引擎，因为innodb是行锁而myisam是表锁，对于高并发写入的应用innodb效果会好些。示例中的服务器 table_locks_immediate / table_locks_waited ＝ 235，myisam就足够了。</p>
+<ul>
+<li>表扫描情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;handler_read%&apos;;</div><div class="line">+-----------------------+-------------+</div><div class="line">| variable_name　　　　　　　　　 | value　　　　　　　 |</div><div class="line">+-----------------------+-------------+</div><div class="line">| handler_read_first　　　　 | 5803750　　　　　 |</div><div class="line">| handler_read_key　　　　　　 | 6049319850　 |</div><div class="line">| handler_read_next　　　　　 | 94440908210 |</div><div class="line">| handler_read_prev　　　　　 | 34822001724 |</div><div class="line">| handler_read_rnd　　　　　　 | 405482605　　　 |</div><div class="line">| handler_read_rnd_next | 18912877839 |</div><div class="line">+-----------------------+-------------+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global status like &apos;com_select&apos;;</div><div class="line">+---------------+-----------+</div><div class="line">| variable_name | value　　　　　 |</div><div class="line">+---------------+-----------+</div><div class="line">| com_select　　　　 | 222693559 |</div><div class="line">+---------------+-----------+</div></pre></td></tr></table></figure>
+<p>计算表扫描率：</p>
+<p>表扫描率 ＝ handler_read_rnd_next / com_select</p>
+<p>如果表扫描率超过4000，说明进行了太多表扫描，很有可能索引没有建好，增加read_buffer_size值会有一些好处，但最好不要超过8mb。</p>
+<h2 id="MYSQL分库，分表，主从，集群，负载均衡器"><a href="#MYSQL分库，分表，主从，集群，负载均衡器" class="headerlink" title="MYSQL分库，分表，主从，集群，负载均衡器"></a><a name="q-7"></a>MYSQL分库，分表，主从，集群，负载均衡器</h2><ul>
+<li>水平切分数据库：可以降低单台机器的负载，同时最大限度的降低了宕机造成的损失</li>
+<li>负载均衡策略：可以降低单台机器的访问负载，降低宕机的可能性</li>
+<li>集群方案：解决了数据库宕机带来的单点数据库不能访问的问题</li>
+<li>读写分离策略：最大限度了提高了应用中读取数据的速度和并发量</li>
+</ul>
+<h3 id="什么是数据切分"><a href="#什么是数据切分" class="headerlink" title="什么是数据切分"></a>什么是数据切分</h3><p>Sharding 不是一个某个特定数据库软件附属的功能，而是在具体技术细节之上的抽象处理，是水平扩展(Scale Out，亦或横向扩展、向外扩展)的解决方案，其主要目的是为突破单节点数据库服务器的 I/O 能力限制，解决数据库扩展性问题。通过一系列的切分规则将数据水平分布到不同的DB或table中，在通过相应的DB路由或者table路由规则找到需要查询的具体的DB或者table，以进行Query操作。“sharding”通常是指“水平切分”</p>
+<p>面对这样的一个表，我们怎样切分呢？怎样将这样的数据分布到不同的数据库中的表中去呢？我们可以这样做，将user_id为1～10000的所有的文章信息放入DB1中的article表中，将user_id为10001～20000的所有文章信息放入DB2中的 article表中，以此类推，一直到DBn。这样一来，文章数据就很自然的被分到了各个数据库中，达到了数据切分的目的。</p>
+<p>接下来要解决的问题就是怎样找到具体的数据库呢？其实问题也是简单明显的，既然分库的时候我们用到了区分字段user_id，那么很自然，数据库路由的过程当然还是少不了user_id的。就是我们知道了这个blog的user_id，就利用这个user_id，利用分库时候的规则，反过来定位具体的数据库。比如user_id是234，利用刚才的规则，就应该定位到DB1，假如user_id是12343，利用该才的规则，就应该定位到DB2。以此类推，利用分库的规则，反向的路由到具体的DB，这个过程我们称之为“DB路由”。</p>
+<h3 id="为什么要数据切分"><a href="#为什么要数据切分" class="headerlink" title="为什么要数据切分"></a>为什么要数据切分</h3><p>分库降低了单点机器的负载；分表，提高了数据操作的效率</p>
+<h3 id="怎么做到数据切分"><a href="#怎么做到数据切分" class="headerlink" title="怎么做到数据切分"></a>怎么做到数据切分</h3><ol>
+<li>号段分区 （优点：可部分迁移 缺点：数据分布不均）</li>
+<li>hash取模分区 （优点：数据分布均匀 缺点：数据迁移的时候麻烦，不能按照机器性能分摊数据）</li>
+<li>在认证库中保存数据库配置 （优点：灵活性强，一对一关系 缺点：每次查询之前都要多一次查询，性能大打折扣）</li>
+</ol>
+<h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><p>每一个分库的节点我们引入多台机器，每台机器保存的数据是一样的，一般情况下这多台机器分摊负载，当出现宕机情况，负载均衡器将分配负载给这台宕机的机器。例如整个数据层有Group1，Group2，Group3三个集群组成，每一个Group包括1个Master（当然Master也可以是多个）和 N个Slave，这些Master和Slave的数据是一致的。</p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡（Load Balance）是分布式系统架构设计中必须考虑的因素之一，它通常是指，将请求/数据【均匀】分摊到多个操作单元上执行，负载均衡的关键在于【均匀】。</p>
+<p><img src="/images/php-basic-001.jpg" alt="常见的负载均衡方案"></p>
+<p>常见互联网分布式架构如上，分为客户端层、反向代理nginx层、站点层、服务层、数据层。</p>
+<p>常见互联网分布式架构如上，分为客户端层、反向代理nginx层、站点层、服务层、数据层。可以看到，每一个下游都有多个上游调用，只需要做到，每一个上游都均匀访问每一个下游，就能实现“将请求/数据【均匀】分摊到多个操作单元上执行”。</p>
+<p>【客户端层-&gt;反向代理层】的负载均衡</p>
+<p><img src="/images/php-basic-002.jpg" alt="客户端层-&gt;反向代理层"></p>
+<p>【客户端层】到【反向代理层】的负载均衡，是通过“DNS轮询”实现的：DNS-server对于一个域名配置了多个解析ip，每次DNS解析请求来访问DNS-server，会轮询返回这些ip，保证每个ip的解析概率是相同的。这些ip就是nginx的外网ip，以做到每台nginx的请求分配也是均衡的。</p>
+<p>【反向代理层-&gt;站点层】的负载均衡</p>
+<p><img src="/images/php-basic-003.png" alt="反向代理层-&gt;站点层"></p>
+<p>【反向代理层】到【站点层】的负载均衡，是通过“nginx”实现的。通过修改nginx.conf，可以实现多种负载均衡策略：</p>
+<p>1)请求轮询：和DNS轮询类似，请求依次路由到各个web-server</p>
+<p>2)最少连接路由：哪个web-server的连接少，路由到哪个web-server</p>
+<p>3)ip哈希：按照访问用户的ip哈希值来路由web-server，只要用户的ip分布是均匀的，请求理论上也是均匀的，ip哈希均衡方法可以做到，同一个用户的请求固定落到同一台web-server上，此策略适合有状态服务，例如session(58沈剑备注：可以这么做，但强烈不建议这么做，站点层无状态是分布式架构设计的基本原则之一，session最好放到数据层存储)</p>
+<p>4)…</p>
+<p>【站点层-&gt;服务层】的负载均衡</p>
+<p><img src="/images/php-basic-004.jpg" alt="站点层-&gt;服务层"></p>
+<p>【站点层】到【服务层】的负载均衡，是通过“服务连接池”实现的。</p>
+<p>上游连接池会建立与下游服务多个连接，每次请求会“随机”选取连接来访问下游服务。</p>
+<p>上一篇文章《RPC-client实现细节》中有详细的负载均衡、故障转移、超时处理的细节描述，欢迎点击link查阅，此处不再展开。</p>
+<p>【数据层】的负载均衡</p>
+<p>在数据量很大的情况下，由于数据层(db，cache)涉及数据的水平切分，所以数据层的负载均衡更为复杂一些，它分为“数据的均衡”，与“请求的均衡”。</p>
+<p>数据的均衡是指：水平切分后的每个服务(db，cache)，数据量是差不多的。</p>
+<p>请求的均衡是指：水平切分后的每个服务(db，cache)，请求量是差不多的。</p>
+<p>业内常见的水平切分方式有这么几种：</p>
+<p>一、按照range水平切分</p>
+<p><img src="/images/php-basic-005.jpg" alt="按照range水平切分"></p>
+<p>每一个数据服务，存储一定范围的数据，上图为例：</p>
+<p>user0服务，存储uid范围1-1kw</p>
+<p>user1服务，存储uid范围1kw-2kw</p>
+<p>这个方案的好处是：</p>
+<p>(1)规则简单，service只需判断一下uid范围就能路由到对应的存储服务</p>
+<p>(2)数据均衡性较好</p>
+<p>(3)比较容易扩展，可以随时加一个uid[2kw,3kw]的数据服务</p>
+<p>不足是：</p>
+<p>(1)请求的负载不一定均衡，一般来说，新注册的用户会比老用户更活跃，大range的服务请求压力会更大</p>
+<p>二、按照id哈希水平切分</p>
+<p><img src="/images/php-basic-006.jpg" alt="按照id哈希水平切分"></p>
+<p>每一个数据服务，存储某个key值hash后的部分数据，上图为例：</p>
+<p>user0服务，存储偶数uid数据</p>
+<p>user1服务，存储奇数uid数据</p>
+<p>这个方案的好处是：</p>
+<p>(1)规则简单，service只需对uid进行hash能路由到对应的存储服务</p>
+<p>(2)数据均衡性较好</p>
+<p>(3)请求均匀性较好</p>
+<p>不足是：</p>
+<p>(1)不容易扩展，扩展一个数据服务，hash方法改变时候，可能需要进行数据迁移</p>
+<p>总结</p>
+<p>负载均衡(Load Balance)是分布式系统架构设计中必须考虑的因素之一，它通常是指，将请求/数据【均匀】分摊到多个操作单元上执行，负载均衡的关键在于【均匀】。</p>
+<p>(1)【客户端层】到【反向代理层】的负载均衡，是通过“DNS轮询”实现的</p>
+<p>(2)【反向代理层】到【站点层】的负载均衡，是通过“nginx”实现的</p>
+<p>(3)【站点层】到【服务层】的负载均衡，是通过“服务连接池”实现的</p>
+<p>(4)【数据层】的负载均衡，要考虑“数据的均衡”与“请求的均衡”两个点，常见的方式有“按照范围水平切分”与“hash水平切分”</p>
+<ul>
+<li>mysql把一个大表拆分多个表后,如何解决跨表查询效率问题</li>
+</ul>
+<ul>
+<li><p>mysql对于大表(千万级),要怎么优化呢</p>
+<ol>
+<li>优化sql和索引</li>
+<li>加缓存，memcached,redis</li>
+<li>主从复制或主主复制，读写分离，可以在应用层做，效率高，也可以用三方工具，第三方工具推荐360的atlas,其它的要么效率不高，要么没人维护</li>
+<li>mysql自带分区表，先试试这个，对你的应用是透明的，无需更改代码,但是sql语句是需要针对分区表做优化的，sql条件中要带上分区条件的列，从而使查询定位到少量的分区上，否则就会扫描全部分区，另外分区表还有一些坑，在这里就不多说了</li>
+<li>那就先做垂直拆分，其实就是根据你模块的耦合度，将一个大的系统分为多个小的系统，也就是分布式系统</li>
+<li><p>水平切分，针对数据量大的表，这一步最麻烦，最能考验技术水平，要选择一个合理的sharding key,为了有好的查询效率，表结构也要改动，做一定的冗余，应用也要改，sql中尽量带sharding key，将数据定位到限定的表上去查，而不是扫描全部的表</p>
+<p>mysql数据库一般都是按照这个步骤去演化的，成本也是由低到高</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="MYSQL索引相关知识"><a href="#MYSQL索引相关知识" class="headerlink" title="MYSQL索引相关知识"></a><a name="q-5"></a>MYSQL索引相关知识</h2><ul>
+<li>最左前缀</li>
+</ul>
+</div><div class="tags"><a href="/tags/面试/">面试</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/09/11/algorithm-index/" class="pre">基础算法</a><a href="/2017/09/06/env-gitblog/" class="next">hexo+github搭建免费个人博客详细教程</a></div><div id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zMDczOS83Mjky"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#php中接口、抽象类区别"><span class="toc-text">php中接口、抽象类区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Http请求与相应"><span class="toc-text">Http请求与相应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Innodb与MyISAM区别"><span class="toc-text">Innodb与MyISAM区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL类型float-double-decimal的区别"><span class="toc-text">MySQL类型float double decimal的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL性能优化方案"><span class="toc-text">MySQL性能优化方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYSQL分库，分表，主从，集群，负载均衡器"><span class="toc-text">MYSQL分库，分表，主从，集群，负载均衡器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是数据切分"><span class="toc-text">什么是数据切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要数据切分"><span class="toc-text">为什么要数据切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么做到数据切分"><span class="toc-text">怎么做到数据切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群"><span class="toc-text">集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#负载均衡"><span class="toc-text">负载均衡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYSQL索引相关知识"><span class="toc-text">MYSQL索引相关知识</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/16/c-tree/">树的一些基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/14/c-data-calculate/">计算机为什么使用补码进行计算</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/env-zsh-style/">终端样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/11/algorithm-index/">基础算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/07/php-basics/">PHP常见面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/env-gitblog/">hexo+github搭建免费个人博客详细教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/26/algorithm-sort/">常用排序算法总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/algorithm-kmp/">KMP算法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/php-laravel/">Laravel5.4学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/c-ascii/">ASCII可显示字符</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C语言/">C语言</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习/">PHP学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境配置/">环境配置</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法学习/">算法学习</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/环境/" style="font-size: 15px;">环境</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/常用查询/" style="font-size: 15px;">常用查询</a> <a href="/tags/补码/" style="font-size: 15px;">补码</a> <a href="/tags/zsh/" style="font-size: 15px;">zsh</a> <a href="/tags/kmp/" style="font-size: 15px;">kmp</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/二叉树/" style="font-size: 15px;">二叉树</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/laravel/" style="font-size: 15px;">laravel</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://zhgxun.github.io/" title="广训" target="_blank">广训</a><ul></ul><a href="http://lyj1215.com/" title="亚娟" target="_blank">亚娟</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><!--if theme.baidusitemap--><!--  a(href=config.root+"baidusitemap.xml")= __("baidusitemap")--><!--  |  |--><!--if theme.feed--><!--  a(href=config.root+"atom.xml")= __("rss")--><!--  |  |--><!--a(href=config.root+"about/")= __("about")--></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">lxzfranky.</a></span><!--span  Theme by--><!--  a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.--><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>(function(d, s) {
+  var j, e = d.getElementsByTagName('body')[0];
+  if (typeof LivereTower === 'function') { return; }
+  j = d.createElement(s);
+  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+  j.async = true;
+  e.appendChild(j);
+})(document, 'script');
+</script></body></html>

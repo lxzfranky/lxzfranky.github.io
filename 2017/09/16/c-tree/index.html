@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>树的一些基本概念 | Franky's Diary</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">树的一些基本概念</h1><a id="logo" href="/.">Franky's Diary</a><p class="description">把有限的生命投入到我开心就好的事情中去</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">树的一些基本概念</h1><div class="post-meta"><a href="/2017/09/16/c-tree/#comments" class="comment-count"></a><p><span class="date">Sep 16, 2017</span><span><a href="/categories/C语言/" class="category">C语言</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>写在前面</p>
+<p>看了几天，参考了一些帖子整理了下数据结构中的各种树的概念</p>
+<p><strong><em>目录</em></strong></p>
+<ul>
+<li><a href="#rendering-tree">零、树</a></li>
+<li><a href="#rendering-tree">一、二叉树</a></li>
+<li><a href="#rendering-bltree">二、平衡二叉树</a></li>
+<li><a href="#rendering-bstree">三、二叉查找树（BST）</a></li>
+<li><a href="#rendering-brtree">四、红黑树</a></li>
+<li><a href="#rendering-avltree">五、完全二叉树（AVL树）</a></li>
+<li><a href="#rendering-ftree">六、满二叉树</a></li>
+<li><a href="#rendering-btree">七、B树</a></li>
+</ul>
+<p><strong><a name="rendering-mtree"></a>零、树</strong></p>
+<p>树结构的特点是：它的每一个结点都可以有不止一个直接后继，除根结点外的所有结点都有且只有一个直接前趋，是由一个或多个结点组成的有限集合，以下是官方定义。</p>
+<ol>
+<li>必有一个特定的称为根(ROOT)的结点</li>
+<li>剩下的结点被分成ｎ&gt;=0个互不相交的集合T1、T2、……Tn，而且， 这些集合的每一个又都是树。树T1、T2、……Tn被称作根的子树(Subtree)</li>
+</ol>
+<blockquote>
+<p>（1）至少有一个结点（称为根）（2）其它是互不相交的子树</p>
+</blockquote>
+<ul>
+<li><p>树的宽度，就是结点的分支数。以组成该树各结点中最大的度作为该树的度，树中宽度为零的结点称为叶结点或终端结点。树中度不为零的结点称为分枝结点或非终端结点。除根结点外的分枝结点统称为内部结点。</p>
+</li>
+<li><p>树的深度是组成该树各结点的最大层次</p>
+</li>
+<li><p>森林指若干棵互不相交的树的集合</p>
+</li>
+<li><p>有序树指树中同层结点从左到右有次序排列，它们之间的次序不能互换，这样的树称为有序树，否则称为无序树。</p>
+</li>
+</ul>
+<p><strong><a name="rendering-tree"></a>一、二叉树</strong></p>
+<p>在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。</p>
+<p><strong><a name="rendering-bltree"></a>二、平衡二叉树</strong></p>
+<p>平衡二叉树又被称为AVL树（区别于AVL算法），它是一棵二叉排序树，且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
+<p><strong><a name="rendering-bstree"></a>三、二叉查找树（BST）</strong></p>
+<p>别名 二叉排序树 二叉搜索树，具有如下特点</p>
+<ol>
+<li>若左子树不空，则左子树上所有结点的值均小于它的根结点的值</li>
+<li>若右子树不空，则右子树上所有结点的值均大于它的根结点的值</li>
+<li>左、右子树也分别为二叉排序树</li>
+<li>没有键值相等的节点（因此，插入的时候一定是叶子节点）</li>
+</ol>
+<ul>
+<li>查找效率最好O(logn)，最坏O(n)</li>
+<li>插入效率和查找效率相同（只插入叶子节点）</li>
+<li><p>删除效率最好O(logn)+O(1)-&gt;只有左子树或者右子树，最差O(logn)+O(logn)-&gt;左子树和右子树同时存在</p>
+</li>
+<li><p>插入算法</p>
+</li>
+</ul>
+<ol>
+<li>首先执行查找算法，找出被插结点的父亲结点。 </li>
+<li>判断被插结点是其父亲结点的左、右儿子。将被插结点作为叶子结点插入。 </li>
+<li>若二叉树为空。则首先单独生成根结点。 </li>
+</ol>
+<ul>
+<li>删除算法</li>
+</ul>
+<ol>
+<li>若*p结点为叶子结点，即PL(左子树)和PR(右子树)均为空树。由于删去叶子结点不破坏整棵树的结构，则可以直接删除此子结点。</li>
+<li>若*p结点只有左子树PL或右子树PR，此时只要令PL或PR直接成为其双亲结点*f的左子树（当*p是左子树）或右子树（当*p是右子树）即可，作此修改也不破坏二叉排序树的特性。</li>
+<li>若*p结点的左子树和右子树均不空。在删去*p之后，为保持其它元素之间的相对位置不变，可按中序遍历保持有序进行调整，可以有两种做法：<br>其一是令*p的左子树为*f的左/右(依*p是*f的左子树还是右子树而定)子树，*s为*p左子树的最右下的结点，而*p的右子树为*s的右子树；<br>其二是令*p的直接前驱（或直接后继）替代*p，然后再从二叉排序树中删去它的直接前驱（或直接后继）－即让*f的左子树(如果有的话)成为*p左子树的最左下结点(如果有的话)，再让*f成为*p的左右结点的父结点。</li>
+</ol>
+<p><strong><a name="rendering-brtree"></a>四、红黑树</strong></p>
+<p><strong><a name="rendering-avltree"></a>五、完全二叉树（AVL树）</strong></p>
+<p>若设二叉树的高度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第h层有叶子结点，并且叶子结点都是从左到右依次排布，这就是完全二叉树</p>
+<p><strong><a name="rendering-ftree"></a>六、满二叉树</strong></p>
+<p>除了叶结点外每一个结点都有左右子叶且叶子结点都处在最底层的二叉树</p>
+<p><strong><a name="rendering-btree"></a>七、B树</strong></p>
+<ol>
+<li><p>所有非叶子结点至多拥有两个儿子（Left和Right）；</p>
+</li>
+<li><p>所有结点存储一个关键字；</p>
+</li>
+<li><p>非叶子结点的左指针指向小于其关键字的子树，右指针指向大于其关键字的子树；</p>
+</li>
+</ol>
+<p>B树的搜索，从根结点开始，如果查询的关键字与结点的关键字相等，那么就命中；否则，如果查询关键字比结点关键字小，就进入左儿子；如果比结点关键字大，就进入右儿子；如果左儿子或右儿子的指针为空，则报告找不到相应的关键字。</p>
+<p>如果B树的所有非叶子结点的左右子树的结点数目均保持差不多（平衡），那么B树的搜索性能逼近二分查找；但它比连续内存空间的二分查找的优点是，改变B树结构（插入与删除结点）不需要移动大段的内存数据，甚至通常是常数开销。</p>
+<p><strong>B+树</strong></p>
+<p><strong>B*树</strong></p>
+</div><div class="tags"><a href="/tags/二叉树/">二叉树</a></div><div class="post-share"></div><div class="post-nav"><a href="/2017/09/14/c-data-calculate/" class="next">计算机为什么使用补码进行计算</a></div><div id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zMDczOS83Mjky"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/16/c-tree/">树的一些基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/14/c-data-calculate/">计算机为什么使用补码进行计算</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/env-zsh-style/">终端样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/11/algorithm-index/">基础算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/07/php-basics/">PHP常见面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/env-gitblog/">hexo+github搭建免费个人博客详细教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/26/algorithm-sort/">常用排序算法总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/algorithm-kmp/">KMP算法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/php-laravel/">Laravel5.4学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/c-ascii/">ASCII可显示字符</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C语言/">C语言</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP学习/">PHP学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境配置/">环境配置</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法学习/">算法学习</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/环境/" style="font-size: 15px;">环境</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/常用查询/" style="font-size: 15px;">常用查询</a> <a href="/tags/补码/" style="font-size: 15px;">补码</a> <a href="/tags/zsh/" style="font-size: 15px;">zsh</a> <a href="/tags/kmp/" style="font-size: 15px;">kmp</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/二叉树/" style="font-size: 15px;">二叉树</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/laravel/" style="font-size: 15px;">laravel</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://zhgxun.github.io/" title="广训" target="_blank">广训</a><ul></ul><a href="http://lyj1215.com/" title="亚娟" target="_blank">亚娟</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><!--if theme.baidusitemap--><!--  a(href=config.root+"baidusitemap.xml")= __("baidusitemap")--><!--  |  |--><!--if theme.feed--><!--  a(href=config.root+"atom.xml")= __("rss")--><!--  |  |--><!--a(href=config.root+"about/")= __("about")--></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">lxzfranky.</a></span><!--span  Theme by--><!--  a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.--><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>(function(d, s) {
+  var j, e = d.getElementsByTagName('body')[0];
+  if (typeof LivereTower === 'function') { return; }
+  j = d.createElement(s);
+  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+  j.async = true;
+  e.appendChild(j);
+})(document, 'script');
+</script></body></html>
